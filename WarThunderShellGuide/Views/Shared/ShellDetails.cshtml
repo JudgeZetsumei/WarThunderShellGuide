@@ -1,0 +1,61 @@
+﻿@model WarThunderShellGuide.Models.TankViewModel
+
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jqPlot/jquery.jqplot.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.trendline.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.canvasTextRenderer.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.canvasAxisLabelRenderer.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.pointLabels.js"></script>
+<script src="~/Scripts/jqPlot/plugins/jqplot.highlighter.js"></script>
+<link href="~/Scripts/jqPlot/jquery.jqplot.min.css" rel="stylesheet" />
+<link href="~/Content/tankIndex.css" rel="stylesheet" />
+
+<div id="chartTankName" >@Model.name</div>
+
+<div id="chart" style="height:400px; width:500px;"></div>
+
+<script>
+    jQuery(document).ready(function () {        
+
+        var urlDataJSON = "@Url.Action("FetchGraphData")";
+        var Id = @Model.tankId;
+        
+        $.getJSON(urlDataJSON, { tankId: Id }, function (data) {
+            var dataLines = [];
+            var dataLabels = [];
+
+            $.each(data, function (entryindex, entry) {
+                dataLines.push(entry['Serie']);
+                dataLabels.push(entry['Name']);                
+            });            
+
+            var options = {
+
+                legend: {
+                    show: true,
+                    showLabels: true,
+                    labels: dataLabels
+                },
+                title: 'Shell Penetration Overview',
+                seriesDefaults: {                   
+                    pointLabels: {
+                        show: true,
+                        location: 'n',
+                        edgeTolerance: -15
+                    },
+                    shadowAngle: 135,
+                    renderOptions: {
+                        barDirection: 'horizontal'
+                    }
+                },
+                axes: {
+                    xaxis: {
+                        renderer: $.jqplot.CategoryAxisRenderer
+                    }
+                },                
+            };
+            var plot = $.jqplot('chart', dataLines, options);
+        });        
+    });
+</script>

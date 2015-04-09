@@ -1,0 +1,85 @@
+﻿.globalTankBox {
+    /*float:left*/
+}
+
+.tankBox {
+    background-color: none;
+    /*border: 5px solid green;*/
+    margin: 10px;
+    width: auto;
+    list-style-type: none;
+    transition: all .2s ease-in-out;
+}
+
+.stats {
+    float: right;
+    font-size: 10px;
+    display: inline;
+    margin: 0 1em 0 1em;
+    position: fixed;
+    top: 10%;
+    left: 52%;
+}
+
+body {
+    background-color: slategray;
+}
+
+
+.tankBox:hover {
+    transform: scale(1.1);
+}
+
+.TreeDiv {
+    float: none;
+    background-color: #86a1bd;
+    /*border: 2px solid #000;*/
+    box-shadow: 0 0 5px #1b1b1b;
+    margin: 10px;
+    width: 250px;
+}
+
+.divTabs {
+    padding: 10px;
+    width: auto;
+    background: #64717e;
+    box-shadow: 0 0 5px #000;
+    min-height: 440px;
+}
+
+.tabs li {
+    list-style: none;
+    display: inline;
+}
+
+.tabs a {
+    padding: 5px 20px;
+    display: inline-block;
+    background: #666;
+    color: #fff;
+    text-decoration: none;
+}
+
+    .tabs a.active {
+        background: #fff;
+        color: #000;
+    }
+
+    .jqplot-title{
+        font-size:large;
+        color:#c3c3c3;
+        text-shadow: 1px 1px #1b1b1b;
+    }
+
+    .jqplot-axis{
+        font-size:large;
+        color:#c3c3c3;
+        text-shadow: 1px 1px #1b1b1b;
+    }
+
+    #chartTankName{
+        text-align:center;
+        font-size:large;
+        color:#c3c3c3;
+        text-shadow: 1px 1px #1b1b1b;
+    }
